@@ -1,18 +1,8 @@
-select *
-from students
-where age between 10 and 20;
-
-select name
-from students;
-
-select *
-from students
-where name like '%0%';
-
-select *
-from students
-where age < id;
-
-select *
-from students
-order by age;
+ALTER TABLE students
+    ADD CHECK (age >= 16);
+ALTER TABLE students
+    ALTER COLUMN name SET NOT NULL;
+ALTER TABLE students
+    ADD CONSTRAINT unique_name UNIQUE (name);
+ALTER TABLE students
+    ALTER COLUMN age SET DEFAULT 20;
