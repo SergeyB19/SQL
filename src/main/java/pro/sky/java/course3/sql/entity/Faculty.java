@@ -1,3 +1,4 @@
+package pro.sky.java.course3.sql.entity;
 
 import javax.persistence.*;
 import java.util.List;

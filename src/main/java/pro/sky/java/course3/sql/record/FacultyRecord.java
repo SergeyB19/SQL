@@ -1,4 +1,4 @@
-package ru.hogwarts.school.record;
+package pro.sky.java.course3.sql.record;
 
 public class FacultyRecord {
 

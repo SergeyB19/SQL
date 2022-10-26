@@ -1,8 +1,8 @@
-package ru.hogwarts.school.repository;
+package pro.sky.java.course3.sql.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ru.hogwarts.school.entity.Faculty;
+import pro.sky.java.course3.sql.entity.Faculty;
 
 import java.util.List;
 

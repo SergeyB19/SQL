@@ -1,4 +1,7 @@
+package pro.sky.java.course3.sql.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -6,6 +9,15 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import pro.sky.java.course3.sql.component.RecordMapper;
+import pro.sky.java.course3.sql.entity.Avatar;
+import pro.sky.java.course3.sql.entity.Student;
+import pro.sky.java.course3.sql.exception.StudentNotFoundException;
+import pro.sky.java.course3.sql.record.AvatarRecord;
+import pro.sky.java.course3.sql.repository.AvatarRepository;
+import pro.sky.java.course3.sql.repository.StudentRepository;
+import pro.sky.java.course3.sql.service.FacultyService;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -19,6 +31,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class AvatarService {
+    Logger logger = LoggerFactory.getLogger(AvatarService.class);
 
     private final AvatarRepository avatarRepository;
     private final StudentRepository studentRepository;
@@ -37,6 +50,7 @@ public class AvatarService {
 
     public void upload(long studentId,
                        MultipartFile multipartFile) throws IOException {
+        logger.info("Was invoked method for upload");
         String avatarName = UUID.randomUUID().toString();
         Path path = Paths.get(pathToAvatarDir).resolve(
                 avatarName +
