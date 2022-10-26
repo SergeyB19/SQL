@@ -1,10 +1,9 @@
+package pro.sky.java.course3.sql.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.hogwarts.school.record.FacultyRecord;
-import ru.hogwarts.school.record.StudentRecord;
-import ru.hogwarts.school.service.FacultyService;
+import pro.sky.java.course3.sql.service.FacultyService;
 
 import java.util.List;
 

@@ -1,11 +1,12 @@
+package pro.sky.java.course3.sql.component;
 
 import org.springframework.stereotype.Component;
-import ru.hogwarts.school.entity.Avatar;
-import ru.hogwarts.school.entity.Faculty;
-import ru.hogwarts.school.entity.Student;
-import ru.hogwarts.school.record.AvatarRecord;
-import ru.hogwarts.school.record.FacultyRecord;
-import ru.hogwarts.school.record.StudentRecord;
+import pro.sky.java.course3.sql.entity.Avatar;
+import pro.sky.java.course3.sql.entity.Faculty;
+import pro.sky.java.course3.sql.entity.Student;
+import pro.sky.java.course3.sql.record.AvatarRecord;
+import pro.sky.java.course3.sql.record.FacultyRecord;
+import pro.sky.java.course3.sql.record.StudentRecord;
 
 @Component
 public class RecordMapper {

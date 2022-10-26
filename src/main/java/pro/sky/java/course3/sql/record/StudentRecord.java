@@ -1,3 +1,4 @@
+package pro.sky.java.course3.sql.record;
 
 public class StudentRecord {
 

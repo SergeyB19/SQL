@@ -1,4 +1,4 @@
-package ru.hogwarts.school.entity;
+package pro.sky.java.course3.sql.entity;
 
 import javax.persistence.*;
 
