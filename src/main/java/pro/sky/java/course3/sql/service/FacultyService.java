@@ -7,6 +7,7 @@ import pro.sky.java.course3.sql.component.RecordMapper;
 import pro.sky.java.course3.sql.entity.Faculty;
 import pro.sky.java.course3.sql.exception.FacultyNotFoundException;
 import pro.sky.java.course3.sql.record.FacultyRecord;
+import pro.sky.java.course3.sql.record.StudentRecord;
 import pro.sky.java.course3.sql.repository.FacultyRepository;
 import pro.sky.java.course3.sql.service.StudentService;
 
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class FacultyService {
-    Logger logger = LoggerFactory.getLogger(FacultyService.class);
+    private final  Logger logger = LoggerFactory.getLogger(FacultyService.class);
 
     private final FacultyRepository facultyRepository;
     private final RecordMapper recordMapper;
@@ -56,18 +57,21 @@ public class FacultyService {
     }
 
     public List<FacultyRecord> facultiesByColor(String color) {
+        logger.info("Was invoked method for facultiesByColor");
         return facultyRepository.findAllByColor(color).stream()
                 .map(recordMapper::toRecord)
                 .collect(Collectors.toList());
     }
 
     public List<FacultyRecord> facultiesByColorOrName(String colorOrName) {
+        logger.info("Was invoked method for facultiesByColorOrName");
         return facultyRepository.findAllByColorIgnoreCaseOrNameIgnoreCase(colorOrName, colorOrName).stream()
                 .map(recordMapper::toRecord)
                 .collect(Collectors.toList());
     }
 
     public List<StudentRecord> getFacultyStudents(Long id) {
+        logger.info("Was invoked method for getFacultyStudents");
         return facultyRepository.findById(id)
                 .orElseThrow(FacultyNotFoundException::new)
                 .getStudents().stream()

@@ -1,11 +1,12 @@
+package pro.sky.java.course3.sql.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.hogwarts.school.record.FacultyRecord;
-import ru.hogwarts.school.record.StudentRecord;
-import ru.hogwarts.school.service.StudentService;
+import pro.sky.java.course3.sql.record.FacultyRecord;
+import pro.sky.java.course3.sql.record.StudentRecord;
+import pro.sky.java.course3.sql.service.StudentService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Max;

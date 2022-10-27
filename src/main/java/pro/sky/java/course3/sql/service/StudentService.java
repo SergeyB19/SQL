@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
-    Logger logger = LoggerFactory.getLogger(StudentService.class);
+   private final Logger logger = LoggerFactory.getLogger(StudentService.class);
 
     private final StudentRepository studentRepository;
     private final FacultyRepository facultyRepository;
@@ -68,18 +68,21 @@ public class StudentService {
     }
 
     public List<StudentRecord> studentsByAge(int age) {
+        logger.info("Was invoked method for studentsByAge");
         return studentRepository.findAllByAge(age).stream()
                 .map(recordMapper::toRecord)
                 .collect(Collectors.toList());
     }
 
     public List<StudentRecord> studentsBetweenAges(int min, int max) {
+        logger.info("Was invoked method for studentsBetweenAges");
         return studentRepository.findAllByAgeBetween(min, max).stream()
                 .map(recordMapper::toRecord)
                 .collect(Collectors.toList());
     }
 
     public FacultyRecord getStudentFaculty(long id) {
+        logger.info("Was invoked method for getStudentFaculty");
         Student student = studentRepository.findById(id)
                 .orElseThrow(StudentNotFoundException::new);
         if (student.getFaculty() == null) {
@@ -89,14 +92,17 @@ public class StudentService {
     }
 
     public int totalCountOfStudents() {
+        logger.info("Was invoked method for totalCountOfStudents");
         return studentRepository.totalCountOfStudents();
     }
 
     public double averageAgeOfStudents() {
+        logger.info("Was invoked method for averageAgeOfStudents");
         return studentRepository.averageAgeOfStudents();
     }
 
     public List<StudentRecord> lastStudents(int count) {
+        logger.info("Was invoked method for lastStudents");
         return studentRepository.lastStudents(count).stream()
                 .map(recordMapper::toRecord)
                 .collect(Collectors.toList());

@@ -3,6 +3,8 @@ package pro.sky.java.course3.sql.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pro.sky.java.course3.sql.record.FacultyRecord;
+import pro.sky.java.course3.sql.record.StudentRecord;
 import pro.sky.java.course3.sql.service.FacultyService;
 
 import java.util.List;

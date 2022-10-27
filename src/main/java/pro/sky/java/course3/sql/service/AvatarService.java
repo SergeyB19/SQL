@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class AvatarService {
-    Logger logger = LoggerFactory.getLogger(AvatarService.class);
+    private final Logger logger = LoggerFactory.getLogger(AvatarService.class);
 
     private final AvatarRepository avatarRepository;
     private final StudentRepository studentRepository;
@@ -79,18 +79,21 @@ public class AvatarService {
     }
 
     public Pair<byte[], String> getAvatarFromDb(long studentId) {
+        logger.info("Was invoked method for getAvatarFromDb");
         Avatar avatar = avatarRepository.findAvatarByStudent_Id(studentId)
                 .orElseThrow(StudentNotFoundException::new);
         return Pair.of(avatar.getData(), avatar.getMediaType());
     }
 
     public Pair<Resource, String> getAvatarFromFs(long studentId) {
+        logger.info("Was invoked method for getAvatarFromFs");
         Avatar avatar = avatarRepository.findAvatarByStudent_Id(studentId)
                 .orElseThrow(StudentNotFoundException::new);
         return Pair.of(new FileSystemResource(avatar.getFilePath()), avatar.getMediaType());
     }
 
     public List<AvatarRecord> findByPagination(int page, int size) {
+        logger.info("Was invoked method for findByPagination");
         return avatarRepository.findAll(PageRequest.of(page, size)).get()
                 .map(recordMapper::toRecord)
                 .collect(Collectors.toList());
