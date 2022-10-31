@@ -13,12 +13,13 @@ import pro.sky.java.course3.sql.record.StudentRecord;
 import pro.sky.java.course3.sql.repository.FacultyRepository;
 import pro.sky.java.course3.sql.repository.StudentRepository;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
-   private final Logger logger = LoggerFactory.getLogger(StudentService.class);
+    private final Logger logger = LoggerFactory.getLogger(StudentService.class);
 
     private final StudentRepository studentRepository;
     private final FacultyRepository facultyRepository;
@@ -108,4 +109,29 @@ public class StudentService {
                 .collect(Collectors.toList());
     }
 
+    public Collection<String> getFilteredByName() {
+        return studentRepository.findAll().stream()
+                .parallel()
+                .map(Student::getName)
+                .map(String::toUpperCase)
+                .filter(s -> s.startsWith("A"))
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public Double getAllStudentsAvgAge() {
+        return studentRepository.findAll()
+                .stream()
+                .mapToInt(Student::getAge)
+                .average()
+                .orElse(0);
+    }
+
+    @Override
+    public Collection<Student> getAll() {
+        return studentRepository.findAll();
+    }
 }
+
+

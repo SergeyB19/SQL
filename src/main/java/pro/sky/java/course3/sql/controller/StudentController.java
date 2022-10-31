@@ -11,7 +11,9 @@ import pro.sky.java.course3.sql.service.StudentService;
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/student")
@@ -74,6 +76,20 @@ public class StudentController {
     @GetMapping("/lastStudents")
     public List<StudentRecord> lastStudents(@RequestParam @Min(1) @Max(10) int count) {
         return studentService.lastStudents(count);
+    }
+
+    @GetMapping("/filteredbyname")
+    public ResponseEntity<Collection<String>> getAllStudentsWithAName() {
+        Collection<String> stringCollection = studentService.getFilteredByName();
+        if (stringCollection.size() == 0) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.ok(stringCollection);
+    }
+
+    @GetMapping("/getallstudentsavgagewithstream")
+    public Double getAllStudentsAvgAgeWithStream() {
+        return studentService.getAllStudentsAvgAge();
     }
 
 }
