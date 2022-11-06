@@ -30,4 +30,14 @@ public class InfoController {
         return (int) time;
     }
 
+    @GetMapping("/printStudents")
+    public void printStudents() {
+        infoService.printStudents();
+    }
+
+    @GetMapping("/printStudentSync")
+    public void printStudentsSync() {
+        infoService.printStudentSync();
+    }
+
 }
