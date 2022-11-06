@@ -1,3 +1,4 @@
+package pro.sky.java.course3.sql.controller;
 
 import org.springframework.core.io.Resource;
 import org.springframework.data.util.Pair;
@@ -7,8 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import ru.hogwarts.school.record.AvatarRecord;
-import ru.hogwarts.school.service.AvatarService;
+import pro.sky.java.course3.sql.record.AvatarRecord;
+import pro.sky.java.course3.sql.service.AvatarService;
 
 import javax.validation.constraints.Min;
 import java.io.IOException;
